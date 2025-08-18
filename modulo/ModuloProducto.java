@@ -42,7 +42,7 @@ public class ModuloProducto {
         JPanel cuadro = new JPanel();
         cuadro.setPreferredSize(new Dimension(90, 110)); 
         cuadro.setBorder(BorderFactory.createLineBorder(Color.GRAY, 2));
-        cuadro.setBackground(Color.WHITE);
+        cuadro.setBackground(Color.GRAY);
         contenedor.add(cuadro, BorderLayout.CENTER);
 
        
