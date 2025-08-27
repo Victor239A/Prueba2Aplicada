@@ -7,8 +7,8 @@ import modulo.Producto;
 import javax.swing.*;
 import java.awt.*;
 
-public class VentanaPrincipal extends JFrame {
-    public VentanaPrincipal() {
+public class Dashboard extends JFrame {
+    public Dashboard() {
         setTitle("Tienda en Java");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(2100, 1500); 
@@ -50,6 +50,6 @@ public class VentanaPrincipal extends JFrame {
     }
 
     public static void main(String[] args) {
-        new VentanaPrincipal();
+        new Dashboard();
     }
 }
