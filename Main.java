@@ -1,33 +1,60 @@
 import control.TiendaFecher;
-import vistas.Dashboard;
 
 public class Main {
     public static void main(String[] args) {
+        try {
+           
+            String urlApi = "https://jsonplaceholder.typicode.com/posts/99";
+            String json = TiendaFecher.obtenerProductos(urlApi);
 
-        String saludo = "Hola mundo";
-        for(int i= 0; i<saludo.length(); i++){
-            System.out.println(saludo.charAt(i));
-        }
+        
+            String clave = "";
+            String valor = "";
+            boolean dentroClave = false;
+            boolean dentroValor = false;
+            boolean leyendoClave = false;
+            boolean leyendoValor = false;
 
-        try { 
-            new vistas.Dashboard();
-            
-            String urlApi ="https://jsonplaceholder.typicode.com/posts";
-            String respuesta = TiendaFecher.obtenerProductos(urlApi);
-            System.out.println("Respuesta de la API:");
-            System.out.println(respuesta);
+            for (int i = 0; i < json.length(); i++) {
+                char c = json.charAt(i);
 
-          
-        for(int i= 0; i<saludo.length(); i++){
-        String letra = " " + respuesta.charAt(i);
-            if(letra.equalsIgnoreCase("o")){
-                System.out.println(respuesta.charAt(i));
+              
+                if (c == '"' && !dentroClave && !leyendoValor) {
+                    dentroClave = true;
+                    clave = "";
+                } else if (c == '"' && dentroClave) {
+                    dentroClave = false;
+                    leyendoClave = true;
+                }
+                
+                else if (c == '"' && leyendoClave && !dentroValor) {
+                    dentroValor = true;
+                    valor = "";
+                } else if (c == '"' && dentroValor) {
+                    dentroValor = false;
+                    leyendoValor = true;
+                } else {
+                    if (dentroClave) {
+                        clave += c;
+                    }
+                    if (dentroValor) {
+                        valor += c;
+                    }
+                }
+
+             
+                if (leyendoClave && leyendoValor) {
+                    System.out.println(clave + " = " + valor);
+                    leyendoClave = false;
+                    leyendoValor = false;
+                }
             }
-        }
+
+           
+            System.out.println(json);
 
         } catch (Exception e) {
-            
-
+            e.printStackTrace();
         }
     }
 }

@@ -1,6 +1,6 @@
 package vistas;
 
-import panel.BannerPanel; 
+import panel.BannerPanel;
 import modulo.ModuloProducto;
 import modulo.Producto;
 
@@ -8,28 +8,28 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Dashboard extends JFrame {
+
+    
     public Dashboard() {
         setTitle("Tienda en Java");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(2100, 1500); 
+        setSize(2100, 1500);
         setLocationRelativeTo(null);
-
         setLayout(new BorderLayout());
 
-        // Panel izquierda
+       
         BannerPanel banner = new BannerPanel();
-        add(banner.getBanner(), BorderLayout.WEST); 
+        add(banner.getBanner(), BorderLayout.WEST);
 
-        // Panel derecha
         JPanel panelDerecha = new JPanel(new BorderLayout());
 
         JLabel lblProducto = new JLabel("Producto");
         lblProducto.setForeground(Color.BLACK);
         lblProducto.setFont(new Font("Arial", Font.BOLD, 22));
         lblProducto.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+
         panelDerecha.add(lblProducto, BorderLayout.NORTH);
 
-       
         Producto[] productos = {
             new Producto("Camiseta", 150.00),
             new Producto("Pantalón", 250.50),
@@ -49,7 +49,4 @@ public class Dashboard extends JFrame {
         setVisible(true);
     }
 
-    public static void main(String[] args) {
-        new Dashboard();
-    }
-}
+   }
